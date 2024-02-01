@@ -1,0 +1,10 @@
+main{
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #4a4e69;
+  color: #f1faee;
+  padding: 1rem;
+}
