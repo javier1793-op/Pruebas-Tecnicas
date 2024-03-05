@@ -1,8 +1,17 @@
+import Filter from "./Filter"
+import '../Css/head.scss'
 
-
-const Head = () => {
+const Head = ({products}) => {
   return (
-    <div>head</div>
+    
+    <>
+      <div className="containerHead">
+        <h2>Filtrar por:</h2>
+        <Filter
+        products={products}
+        />
+      </div>
+    </>
   )
 }
 
