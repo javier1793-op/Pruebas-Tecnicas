@@ -3,10 +3,12 @@ import { CartContex } from "../Context/cart"
 
 export function useCart (){
     
-    const {openCart, setOpenCart}= useContext(CartContex)
+    const {openCart, setOpenCart,listCart,setListCart}= useContext(CartContex)
     
     return{
         openCart,
-        setOpenCart
+        setOpenCart,
+        listCart,
+        setListCart
     }
 }
