@@ -3,9 +3,20 @@ import "../Css/cart.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { useCart } from "../Hooks/useCart";
 import ItemCart from "./itemCart";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
   const { setOpenCart, listCart } = useCart();
+  const [total, setTotal] = useState(0)
+  var newTotal = 0
+
+  useEffect(() => {
+    listCart.forEach(item => {
+        newTotal += item.subTotal;
+      });
+   setTotal(newTotal)
+  }, [listCart])
+  
 
   const handleCloseModal = () => {
     setOpenCart(false);
@@ -22,10 +33,18 @@ const Cart = () => {
         <section className="listCartModal">
           {listCart.map(item=>(
              <>
-        <ItemCart/><br/>
+        <ItemCart
+        img={item.img}
+        title={item.title}
+        category={item.caategory}
+        price={item.price}
+        count={item.count}
+        subtotal={item.subTotal}
+        /><br/>
              </>
           ))
-        }{'Total a Pagar: '}
+        }{'Total a Pagar: $ '}
+        {total}
         </section>
         }
         

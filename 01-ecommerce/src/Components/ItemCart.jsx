@@ -1,25 +1,28 @@
+
 import '../Css/itemCart.scss'
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ItemCart = () => {
+const ItemCart = ({img,title,category,price,count,subtotal}) => {
+
+
   return (
     <>
     <div className="containerItemCart">
-        <img src="" alt="miniatura" />
+        <img src={img} alt="miniatura" />
         <section className='detallCart'>
-            <h3>nombre</h3>
-            <span>categoria</span>
+            <h3>{title}</h3>
+            <span>{category}</span>
         </section>
         <section className='detallPriceCart'>
-            <span>precio unitario</span>
+            <span>{price}</span>
             <section>
                 <span>{'( x '}</span>
-            <span>cantidad</span>
+            <span>{count}</span>
             <span>{' )'}</span> 
             </section>
            
             <span>{'SubTotal:'}</span>
-            <span>precio final</span>
+            <span>{subtotal}</span>
         </section>
         <section>
         <RiDeleteBin6Line className='icon'/>

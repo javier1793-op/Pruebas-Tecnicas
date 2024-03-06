@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import '../Css/itemProduct.scss'
+import { useCart } from '../Hooks/useCart'
 
 const ItemProduct = ({title,price,category,thumbnail}) => {
   
   const [count, setCount] = useState(1)
+  const {addCart}=useCart()
   
   const incrementar = () => {
     setCount(count + 1);
@@ -14,6 +16,22 @@ const ItemProduct = ({title,price,category,thumbnail}) => {
       setCount(count - 1);
     }
   };
+
+  const handleAddCart =()=>{
+    const sub= price*count
+
+    const newProduct={
+      img:thumbnail,
+      title:title,
+      category:category,
+      priceUnit: price,
+      count: count,
+      subTotal: sub
+    }
+
+    addCart(newProduct)
+  }
+
   return (
     <>
       <div className="containerItemProduct">
@@ -24,7 +42,9 @@ const ItemProduct = ({title,price,category,thumbnail}) => {
         <span>{'$'}{price}</span>
        </section>
         <section className='buttonCart'>
-          <button>ADD CART</button>
+          <button
+          onClick={handleAddCart}
+          >ADD CART</button>
           <div className="count">
             <span className='sum'
             onClick={incrementar}
