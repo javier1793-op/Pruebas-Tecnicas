@@ -6,6 +6,8 @@ import Head from './Components/head'
 
 import initialProduct from './mocks/products.json'
 import { useFilter } from './Hooks/useFilter'
+import Cart from './Components/Cart'
+import { useCart } from './Hooks/useCart'
 
 function App() {
 
@@ -14,14 +16,17 @@ function App() {
   const {filterProduct}=useFilter()
   const productFilter= filterProduct(products)
  
+  const {openCart}=useCart()
 
   return (
     <>
     
       <main>
+        {openCart && <Cart/>}
+        
         <Head
           products={initialProduct}
-        />
+          />
         <Product
         productFilter={productFilter}
         />

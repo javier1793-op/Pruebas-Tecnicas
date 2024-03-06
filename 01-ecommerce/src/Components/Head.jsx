@@ -1,8 +1,16 @@
 import Filter from "./Filter"
 import '../Css/head.scss'
 import { BsCart2 } from "react-icons/bs";
+import { useCart } from "../Hooks/useCart";
 
 const Head = ({products}) => {
+
+  const {setOpenCart}=useCart()
+
+  const handleOpenModal = ()=>{
+    setOpenCart(true)
+  }
+
   return (
     
     <>
@@ -13,7 +21,9 @@ const Head = ({products}) => {
         products={products}
         />
         <div className="cartCount">
-        <BsCart2 className="icon"/>
+        <BsCart2 className="icon"
+        onClick={handleOpenModal}
+        />
           <span>{'0'}</span>
         </div>
         </section>
