@@ -1,10 +1,13 @@
+
+
 main{
-  min-width: 100vw;
+  min-width: 98vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: #4a4e69;
-  color: #f1faee;
+  color: #4a4e69;
+  background: #f7fff7;
   padding: 1rem;
+  align-items: center;
 }

@@ -19,6 +19,11 @@ const Product = ({productFilter}) => {
           />
 
         ))}
+        {listProduct.length === 0 && 
+          <h3>
+            {'No se encontro producto'}
+          </h3>
+        }
         </div>    
     </>
   )

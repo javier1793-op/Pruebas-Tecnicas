@@ -1,8 +1,10 @@
 .containerProduct{
     display: grid;
-    width: 100%;
     grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
     gap: 1rem;
     justify-items: center;
     padding: .5rem;
+    width: 95%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
 }
