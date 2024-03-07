@@ -1,9 +1,15 @@
 
 import '../Css/itemCart.scss'
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useCart } from '../Hooks/useCart';
 
 const ItemCart = ({img,title,category,price,count,subtotal}) => {
 
+  const {deleteItemCart}= useCart()
+
+  const handledeleteItem = ()=>{
+    deleteItemCart(title)
+  }
 
   return (
     <>
@@ -22,10 +28,12 @@ const ItemCart = ({img,title,category,price,count,subtotal}) => {
             </section>
            
             <span>{'SubTotal:'}</span>
-            <span>{subtotal}</span>
+            <span>{'$ '}{subtotal}</span>
         </section>
         <section>
-        <RiDeleteBin6Line className='icon'/>
+        <RiDeleteBin6Line className='icon'
+        onClick={handledeleteItem}
+        />
         </section>
     </div>
     </>

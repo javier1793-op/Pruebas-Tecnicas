@@ -2,10 +2,20 @@ import Filter from "./Filter"
 import '../Css/head.scss'
 import { BsCart2 } from "react-icons/bs";
 import { useCart } from "../Hooks/useCart";
+import { useEffect, useState } from "react";
 
 const Head = ({products}) => {
 
-  const {setOpenCart}=useCart()
+  const {setOpenCart, listCart}=useCart()
+  const [total, setTotal] = useState(0)
+  var newTotal = 0
+
+  useEffect(() => {
+    listCart.forEach(item => {
+        newTotal += item.subTotal;
+      });
+   setTotal(newTotal)
+  }, [listCart])
 
   const handleOpenModal = ()=>{
     setOpenCart(true)
@@ -24,7 +34,7 @@ const Head = ({products}) => {
         <BsCart2 className="icon"
         onClick={handleOpenModal}
         />
-          <span>{'0'}</span>
+          <span>{'$ '}{total}</span>
         </div>
         </section>
         

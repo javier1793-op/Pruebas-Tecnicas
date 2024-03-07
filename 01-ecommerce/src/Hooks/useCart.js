@@ -9,12 +9,19 @@ export function useCart (){
         const newCart = [...listCart, product]
         setListCart(newCart)
     }
+
+    const deleteItemCart = (title)=>{
+        let newList = listCart.filter(item => item.title !== title)
+        
+        setListCart(newList)
+    }
     
     return{
         openCart,
         setOpenCart,
         listCart,
         setListCart,
-        addCart
+        addCart,
+        deleteItemCart
     }
 }

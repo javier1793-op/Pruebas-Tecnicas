@@ -6,7 +6,7 @@ import ItemCart from "./itemCart";
 import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const { setOpenCart, listCart } = useCart();
+  const { setOpenCart, listCart,setListCart } = useCart();
   const [total, setTotal] = useState(0)
   var newTotal = 0
 
@@ -21,12 +21,18 @@ const Cart = () => {
   const handleCloseModal = () => {
     setOpenCart(false);
   };
+
+  const handledeleteCart = ()=>{
+    setListCart([])
+  }
   return createPortal(
     <>
       <div className="containerCart">
         <section className="headCart">
           <h1>Carrito</h1>
-          <button>limpiarCarrito</button>
+          <button
+          onClick={handledeleteCart}
+          >limpiarCarrito</button>
           <AiOutlineClose className="icon" onClick={handleCloseModal} />
         </section>
         {listCart.length === 0 ? "El carrito se encuentra vacio":
