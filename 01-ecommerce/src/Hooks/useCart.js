@@ -19,8 +19,8 @@ export function useCart (){
                 if (index === existingProductIndex) {
                     return {
                         ...item,
-                        count: item.count + product.count, // Actualizar la cantidad
-                        subTotal: (item.count + product.count) * product.priceUnit // Calcular el nuevo subtotal
+                        count: item.count + product.count, 
+                        subTotal: (item.count + product.count) * product.priceUnit 
                     };
                 }
                 return item;
