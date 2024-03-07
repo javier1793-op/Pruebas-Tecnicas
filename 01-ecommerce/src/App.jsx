@@ -11,12 +11,13 @@ import { useCart } from './Hooks/useCart'
 
 function App() {
 
-  const [products, setProducts] = useState(initialProduct.products)
-
-  const {filterProduct}=useFilter()
-  const productFilter= filterProduct(products)
+  const { openCart } = useCart();
+  const { filterProduct } = useFilter();
+  const [products, setProducts] = useState(initialProduct.products);
+  
+  
+  const productFilter = filterProduct(products);
  
-  const {openCart}=useCart()
 
   return (
     <>
