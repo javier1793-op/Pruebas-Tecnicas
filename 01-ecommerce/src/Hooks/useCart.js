@@ -8,10 +8,31 @@ export function useCart (){
        
 
     const addCart = (product)=>{
-        const newCart = [...listCart, product]
-        setListCart(newCart)
 
-        localStorage.setItem('cart',JSON.stringify(newCart))
+
+        const existingProductIndex = listCart.findIndex(item => item.title === product.title);
+
+        if (existingProductIndex !== -1) {
+            
+           
+            const updatedListCart = listCart.map((item, index) => {
+                if (index === existingProductIndex) {
+                    return {
+                        ...item,
+                        count: item.count + product.count, // Actualizar la cantidad
+                        subTotal: (item.count + product.count) * product.priceUnit // Calcular el nuevo subtotal
+                    };
+                }
+                return item;
+            });
+            setListCart(updatedListCart);
+        }else{
+        const newCart = [...listCart, product]
+        setListCart(newCart) 
+        }
+        
+
+        localStorage.setItem('cart',JSON.stringify(listCart))
     }
 
     const deleteItemCart = (title)=>{
