@@ -5,16 +5,17 @@ export function useCart (){
     
     const {openCart, setOpenCart,listCart,setListCart}= useContext(CartContex)
     
-       
-
-    const addCart = (product)=>{
-
-
+    useEffect(() => {
+        const storedCart = localStorage.getItem('cart');
+        if (storedCart) {
+            setListCart(JSON.parse(storedCart));
+        }
+    }, []);
+    
+    const addCart = (product) => {
         const existingProductIndex = listCart.findIndex(item => item.title === product.title);
-
+    
         if (existingProductIndex !== -1) {
-            
-           
             const updatedListCart = listCart.map((item, index) => {
                 if (index === existingProductIndex) {
                     return {
@@ -26,13 +27,12 @@ export function useCart (){
                 return item;
             });
             setListCart(updatedListCart);
-        }else{
-        const newCart = [...listCart, product]
-        setListCart(newCart) 
+            localStorage.setItem('cart', JSON.stringify(updatedListCart)); 
+        } else {
+            const newCart = [...listCart, product];
+            setListCart(newCart);
+            localStorage.setItem('cart', JSON.stringify(newCart)); 
         }
-        
-
-        localStorage.setItem('cart',JSON.stringify(listCart))
     }
 
     const deleteItemCart = (title)=>{
@@ -43,12 +43,7 @@ export function useCart (){
         localStorage.setItem('cart',JSON.stringify(newList))
     }
 
-    useEffect(() => {
-        const storedCart = localStorage.getItem('cart');
-        if (storedCart) {
-            setListCart(JSON.parse(storedCart));
-        }
-    }, [setListCart]);
+   
     
     
     return{
